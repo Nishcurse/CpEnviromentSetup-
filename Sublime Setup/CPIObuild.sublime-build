@@ -1,0 +1,33 @@
+{
+"cmd": ["g++.exe","-DNISHPC","-Wextra","-Wall",
+ "-std=c++23", "${file}", 
+  "-o",
+   "${file_base_name}.exe",
+    "&&" ,
+     "${file_base_name}.exe<andar.txt>output.txt"],
+"shell":true,
+"working_dir":"$file_path",
+"selector":"source.cpp",
+"variants": [
+    {
+      "name": "Run in terminal with multiple inputs",
+      "cmd": ["start", "cmd", "/k", "${file_base_name}.exe", ">", "output.txt"]
+    }
+  ]
+
+}
+
+  // Keybinding for fastcpbuild (file input)
+  {
+    "keys": ["ctrl+b"], 
+    "command": "build", 
+    "args": {"build_system": "Packages/User/fastcpbuild.sublime-build"}
+  },
+  // Keybinding for Run in terminal with multiple inputs
+  {
+    "keys": ["ctrl+shift+b"], 
+    "command": "build", 
+    "args": {"variant": "Run in terminal with multiple inputs"}
+  },
+  { "keys": ["ctrl+shift+c"], "command": "cancel_build" },
+]
