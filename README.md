@@ -16,8 +16,7 @@
 we need to change some of the things as Your Environment Variable so we need to change -D {YOUR ENVIRONMENT NAME} then you need to change the file name from input and output 
 there are two screen shot 
 
-
-
+![ScreenShoot](https://github.com/user-attachments/assets/511aca49-fefe-4b82-918e-590cc0e56137)
 
 
 ## Vs Code 
