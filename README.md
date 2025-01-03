@@ -22,4 +22,8 @@ there are two screen shot
 ## Vs Code 
 we need to change some of the things as Your Environment Variable so we need to change -D {YOUR ENVIRONMENT NAME} then you need to change the file name from input and output 
 there are two screen shot 
+- we also need to create a task.json file the instruction for which are here
+
+
+![image](https://github.com/user-attachments/assets/ccaa1c0d-0071-4c86-9825-898c2cc6ed8f)
 
