@@ -8,8 +8,8 @@
 
 
 ## There are Two Setups 
-### SUBLIME TEXT 
-### VS CODE 
+- SUBLIME TEXT 
+- VS CODE 
 
 
 ## Sublime setup 
