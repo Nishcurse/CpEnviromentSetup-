@@ -1,0 +1,58 @@
+<snippet>
+	<content><![CDATA[
+ll mpow(ll base, ll raise) {
+    if (raise > mod) {
+        raise %= mod - 1;  
+    }
+    base %= mod;
+    ll ans = 1;
+    while (raise) {
+        if (raise & 1) {
+            ans = (ans * base) % mod;
+        }
+        base = (base * base) % mod;
+        raise >>= 1;
+    }
+    return ans;
+}
+
+ll fact[sze]; 
+void cal_fac(){
+    fact[0] =fact[1] = 1; 
+    for(ll i = 2; i < sze;i++){
+        fact[i] = i * fact[i-1] ;
+        fact[i] %= mod; 
+    }
+}
+
+ll C(ll n,ll r){
+    ll res =  fact[n]; 
+    res *= mpow(fact[r],mod-2);
+    res %= mod;  
+    res *= mpow(fact[n-r],mod-2); 
+    res %= mod; 
+    return  res; 
+}
+
+inline ll mmul(ll a, ll b) { // (a * b) % mod
+    return ((a % mod) * (b % mod)) % mod;
+}
+
+inline ll mdiv(ll a, ll b) { // (a / b) % mod
+    return (a % mod * mpow(b, mod - 2)) % mod;
+}
+
+inline ll madd(ll a, ll b) { // (a + b) % mod
+    return (a % mod + b % mod) % mod;
+}
+
+inline ll msub(ll a, ll b) { // (a - b) % mod
+    return (a % mod - b % mod + mod) % mod;
+}${0}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>mpow</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

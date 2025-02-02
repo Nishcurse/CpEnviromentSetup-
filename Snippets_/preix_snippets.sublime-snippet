@@ -1,0 +1,65 @@
+<snippet>
+    <content><![CDATA[
+// code credits -> gokuu007 
+template<class T>
+class bit_prefix {
+
+private :
+    vector<vector<T>> prefix;
+    int MSB, MAX;
+public: 
+    bit_prefix (vector<T>& a, int x) {
+        MAX = *max_element(begin(a), end(a));
+        MSB = x;
+        prefix.assign(int(a.size()), vector<int>(MSB));
+        for (int i = 0; i < int(a.size()); ++i) {
+            for (int j = 0; j < MSB; ++j) {
+                if (a[i] >> j & 1)
+                    prefix[i][j] += 1;
+                if (i > 0)
+                    prefix[i][j] += prefix[i - 1][j];
+            }
+        }
+    }
+
+    T range_and(int l, int r) {
+        T sum = 0;
+        for (int i = 0; i < MSB; ++i) {
+            int count = prefix[r][i] - (l > 0 ? prefix[l - 1][i] : 0);
+            if (count == (r - l + 1))
+                sum |= 1 << i;
+        }
+
+        return sum;
+    }
+
+    T range_xor(int l, int r) {
+        T sum = 0;
+        for (int i = 0; i < MSB; ++i) {
+            int count = prefix[r][i] - (l > 0 ? prefix[l - 1][i] : 0);
+            if (count & 1)
+                sum |= 1 << i;
+        }
+
+        return sum;
+    }
+
+
+    T range_or(int l, int r) {
+        T sum = 0;
+        for (int i = 0; i < MSB; ++i) {
+            int count = prefix[r][i] - (l > 0 ? prefix[l - 1][i] : 0);
+            if (count > 0)
+                sum |= 1 << i;
+        }
+
+        return sum;
+    }
+};
+
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>bitprefix</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.c++</scope>
+</snippet>

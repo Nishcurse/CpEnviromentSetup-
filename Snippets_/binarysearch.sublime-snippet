@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+ll lo = ${1} , hi = ${2}; 
+ll mid = lo + ((hi - lo) >> 1ll);
+ll res = ${3}; 
+while(hi>=lo){
+	mid = lo + ((hi - lo) >> 1ll) ; 
+	if(${4}){
+		res = mid; 
+		${5}
+	}else{
+		${0}
+	}
+}  
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>BinarySearch</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

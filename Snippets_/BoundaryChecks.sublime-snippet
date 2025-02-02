@@ -1,0 +1,11 @@
+<snippet>
+	<content><![CDATA[
+inline bool check(ll i, ll j) {
+    return (0 <= i && i < n && j >= 0 && j < m);
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>andarhai</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
