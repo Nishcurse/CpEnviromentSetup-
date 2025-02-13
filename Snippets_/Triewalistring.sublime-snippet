@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[
+
+struct TrieNode{
+    struct TrieNode *child[26]; 
+    bool isEnd; 
+
+    TrieNode(){
+        isEnd = false;
+
+        for(int i = 0 ;i < 26 ;i++){
+            child[i] = NULL;
+        }
+    }
+}; 
+
+void insert(string &s, struct TrieNode *root){
+    struct TrieNode *curr = root; 
+    ll n = s.length();
+    for(ll i = 0 ;i < n;i++){
+        ll in = s[i] - 'a'; 
+        if(curr->child[in]==NULL){
+            curr->child[in] = new TrieNode(); 
+        }
+        curr = curr->child[in]; 
+    }
+    curr -> isEnd = true; 
+}
+
+bool check(string &s , struct TrieNode *root){
+    struct TrieNode *curr = root; 
+
+    for(auto &i:s){
+        ll in = s[i] - 'a'; 
+        if(curr->child[in] == NULL){
+            return false; 
+        }
+        curr = curr -> child[in]; 
+    }
+
+    return (curr->isEnd) ; 
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>TrieString</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

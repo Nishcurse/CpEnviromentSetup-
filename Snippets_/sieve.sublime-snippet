@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+const int sze = ${0}+10;
+vector<int> spf(sze,-1);
+void seive(){
+    spf[0] = spf[1] = 1; 
+    for(ll i = 2; i < sze ; i++){
+        if(spf[i]==-1){
+            spf[i] = i ; 
+            for(ll j = i*i; j < sze; j+=i){
+                spf[j]=i;
+            }
+        }
+    }
+}
+bool isPrime(ll n){
+    return (spf[n]==n) ; 
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>Sieve</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

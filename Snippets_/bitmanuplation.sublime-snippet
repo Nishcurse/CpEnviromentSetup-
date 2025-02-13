@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+
+// Bit Manupulation
+ll setBit_count(ll n){
+    return  __builtin_popcountll(n); 
+}
+ll highesSet_bit(ll n){
+    return (63 - __builtin_clzll(n)); 
+}
+ll trailZeros(ll n){
+	return __builtin_ctzll(n); 
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>bitMan</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

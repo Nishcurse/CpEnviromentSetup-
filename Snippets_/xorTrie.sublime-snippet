@@ -1,0 +1,50 @@
+<snippet>
+	<content><![CDATA[
+        
+struct TrieNode{
+    struct TrieNode *child[2]; 
+    ll val; 
+
+    TrieNode(){
+        val = 0;
+
+        for(int i = 0 ;i < 2 ;i++){
+            child[i] = NULL;
+        }
+    }
+}; 
+
+void insert(ll prefix, struct TrieNode *root){
+    struct TrieNode *curr = root; 
+
+    for(ll i = 30 ;i >= 0;i--){
+        ll in =(prefix>>i)&1;
+        if(curr->child[in]==NULL){
+            curr->child[in] = new TrieNode(); 
+        }
+        curr = curr->child[in]; 
+    }
+    curr->val = prefix; 
+}
+
+ll Query(ll right, struct TrieNode *root){
+    struct TrieNode *curr = root; 
+
+    for(ll i = 30 ;i >= 0 ;i--){
+        ll in = (right>>i) & 1;
+        if(curr->child[1-in] != NULL){
+            curr = curr->child[1-in]; 
+        }else {
+            curr = curr -> child[in]; 
+        }
+    }
+
+    return  max(right,right ^ (curr->val));     
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>xorTrie</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
