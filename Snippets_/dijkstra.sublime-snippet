@@ -1,0 +1,35 @@
+<snippet>
+	<content><![CDATA[
+
+// please define your inf variable
+// everthing is in zero based indexing 
+vector<ll> dijkstra(vector<vector<pair<ll,ll>>> &adj , ll src){
+    ll n = adj.size(); 
+    vector<ll> dist(n ,inf),vis(n,0); 
+    set<pair<ll,ll>> st; 
+    st.insert({0,src}); 
+    dist[src] = 0 ; 
+
+    // algorithm 
+    while(!st.empty()){
+        auto [w,from] = *st.begin(); 
+        st.erase(st.begin()); 
+        vis[from] = 1; 
+        dist[from] = w; 
+        for(auto &[to, cost]: adj[from]){
+            if(!vis[to] && (dist[to] > cost + w)){
+                st.erase({dist[to] , to}); 
+                dist[to] = w  + cost; 
+                st.insert({dist[to], to}); 
+            }
+        }
+    }
+    return dist; 
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dijkstra</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

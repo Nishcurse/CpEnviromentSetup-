@@ -1,0 +1,65 @@
+<snippet>
+	<content><![CDATA[
+/* segs tree by nish::? */
+template<typename T, typename F ,typename S>
+class segstree {
+public:
+    vector<T> t;
+    int sze;
+    S initial_value;
+    F func;
+
+    segstree(int szee, S initial_value, const F& FNC) : sze(szee), initial_value(initial_value), func(FNC) {
+        t.assign(4 * szee, initial_value);
+    }
+
+    segstree(vector<T>& a, S initial_value, const F& FNC) : sze(a.size()), initial_value(initial_value), func(FNC) {
+        t.assign(4 * sze, initial_value);
+        build(a, 1, 0, sze - 1);
+    }
+
+    void build(vector<T>& a, int id, int l, int r) {
+        if (l == r) {
+            t[id] = a[l];
+            return;
+        }
+        int mid = (l + r) / 2;
+        build(a, 2 * id, l, mid);
+        build(a, 2 * id + 1, mid + 1, r);
+        t[id] = func(t[2 * id], t[2 * id + 1]);
+    }
+
+    void update(int pos, T nv) {
+        update(pos, nv, 1, 0, sze - 1);
+    }
+
+    void update(int pos, T nv, int id, int l, int r) {
+        if (l == r) {
+            t[id] = nv;
+            return;
+        }
+        int mid = (l + r) / 2;
+        if (pos <= mid)
+            update(pos, nv, 2 * id, l, mid);
+        else
+            update(pos, nv, 2 * id + 1, mid + 1, r);
+        t[id] = func(t[2 * id], t[2 * id + 1]);
+    }
+
+    T query(int ql, int qr) {
+        return query(ql, qr, 1, 0, sze - 1);
+    }
+
+    T query(int ql, int qr, int id, int l, int r) {
+        if (qr < l || ql > r) return initial_value;
+        if (ql <= l && qr >= r) return t[id];
+        int mid = (l + r) / 2;
+        return func(query(ql, qr, 2 * id, l, mid), query(ql, qr, 2 * id + 1, mid + 1, r));
+    }
+};
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>SegsTree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>
