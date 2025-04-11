@@ -1,0 +1,11 @@
+{
+	"theme": "ayu-dark.sublime-theme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"color_scheme": "ayu-dark.sublime-color-scheme",
+	"font_face": "ProFont IIx Nerd Font",
+	"font_size": 15,
+	"index_files": true,
+}

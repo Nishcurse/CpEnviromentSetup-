@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+// binary search mx = true for max value or else false
+// nish template shop
+template<typename A , typename B> 
+A toufanisearch(A lo , A hi ,  bool mx , const B& pred ){
+    A res = -1; 
+    while(hi >= lo){
+        A mid = lo + ((hi-lo)>>1ll); 
+        if(pred(mid)){
+            res = mid; 
+            lo = (mx ? mid + 1 : lo);
+            hi = (!mx ? mid - 1: hi); 
+        }else{
+            lo = (!mx ? mid + 1 : lo); 
+            hi = (mx ? mid - 1 : hi); 
+        }
+    }
+    return res; 
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>binarysearch</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

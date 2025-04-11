@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+vector<int> solve(vector<pair<int, int>>& v, int from, int to, int target, int size) {
+    if (size == 2) {
+        while (from < to && v[to].first + v[to - 1].first >= target && v[from].first + v[from + 1].first <= target) {
+            int sum = v[from].first + v[to].first;
+            if (sum > target) to -= 1;
+            else if (sum < target) from += 1;
+            else return {v[from].second, v[to].second};
+        }
+    } else {
+        for (int i = from + size - 1; i <= to; i++) {
+            auto res = solve(v, 0, i - 1, target - v[i].first, size - 1);
+            if (res.size()) {
+                res.push_back(v[i].second);
+                return res;
+            }
+        }
+    }
+    return {};
+}
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sum accumulator</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.c++</scope>
+</snippet>

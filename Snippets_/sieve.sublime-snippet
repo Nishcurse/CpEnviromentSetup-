@@ -1,14 +1,15 @@
 <snippet>
 	<content><![CDATA[
 const int sze = ${0}+10;
-vector<int> spf(sze,-1);
+const ll inf = sze + 1000; 
+vector<ll> spf(sze,inf);
 void seive(){
     spf[0] = spf[1] = 1; 
     for(ll i = 2; i < sze ; i++){
-        if(spf[i]==-1){
+        if(spf[i]==inf){
             spf[i] = i ; 
             for(ll j = i*i; j < sze; j+=i){
-                spf[j]=i;
+                spf[j]=min(spf[j],i);
             }
         }
     }

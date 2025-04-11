@@ -11,6 +11,16 @@ ll highesSet_bit(ll n){
 ll trailZeros(ll n){
 	return __builtin_ctzll(n); 
 }
+// this function returns bitwise and of all values from lo to high in logn
+ll andltor(ll a, ll b) {
+      int shiftcount = 0;
+      while(a != b and a > 0) {
+          shiftcount++;
+          a >>= 1; 
+          b >>= 1;
+    }
+      return (a << shiftcount);
+}
 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
